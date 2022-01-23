@@ -25,6 +25,11 @@ function createObjectId() {
   var column = 16;
   var email = SpreadsheetApp.getActiveSheet().getRange(lR, column).getValue();
   
+  if(SpreadsheetApp.getActiveSheet().getRange(lR, 2).getValue()=="Yes"){
+    console.log(phoneNumber);
+    start(phoneNumber.toString())
+  } 
+
   
 
 
