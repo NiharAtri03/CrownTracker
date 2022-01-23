@@ -74,10 +74,14 @@ function anotherloop(number) {
     //console.log(finalNums);
 
     finalfinalNums = [];
-    for( var i = 1; i < finalNums.length; i++ ) {
-        if( findCol(finalNums[i]) != null ) { 
+    for( var i = 0; i < finalNums.length; i++ ) {
+      console.log("printing line 78");
+        if( findCol(finalNums[i]) !== null ) { 
+          console.log("printing line 80");
           var a3 = floop(findCol(finalNums[i]), 18);
           for( var j = 0; j < a3.length; j++ ) {
+            console.log("printing line 83");
+            console.log(a3[j]);
             finalfinalNums.push(a3[j]);
           }
         }
@@ -106,12 +110,27 @@ function anotherloop(number) {
 
     for( var i = 0; i < finalNums.length; i++ ) {
       //console.log(finalNums[i]);
-      sendSms(finalNums[i].toString(), "**PROTECT PURDUE NOTICE!** Someone in your close friends has tested positive for COVID. It is advised that you take a COVID test ASAP.");
+      if(finalNums[i]==null){
+        console.log("blank check 111");
+
+      }
+      else {
+        console.log(finalNums[i]);
+        sendSms(finalNums[i].toString(), "**PROTECT PURDUE NOTICE!** Someone in your close friends has tested positive for COVID. It is advised that you take a COVID test ASAP.");
+      }  
     }
 
     for( var j = 0; j < finalfinalNums.length; j++ ) {
       //console.log(finalNums[i])
-      sendSms(finalfinalNums[j].toString(), "**PROTECT PURDUE NOTICE!** One of your close friend's close friends has tested positive for COVID. It is advised that you watch out for symptoms and take a COVID test if possible.");
+       if(finalfinalNums[j]==null){
+        console.log("blank check 120");
+
+      }
+      else {
+        console.log("2nd circle numbers");
+        console.log(finalfinalNums[j]);
+        sendSms(finalfinalNums[j].toString(), "**PROTECT PURDUE NOTICE!** One of your close friend's close friends has tested positive for COVID. It is advised that you watch out for symptoms and take a COVID test if possible.");
+      }
     }  
   }  
 
