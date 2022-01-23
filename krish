@@ -31,7 +31,7 @@ function anotherloop(number) {
 } 
 
   function findNumbers() {
-    var row = 9; // CHANGE THIS
+    var row = 10; // CHANGE THIS
     finalNums = floop(row, 18);
     var al = anotherloop("9398419384");
     for( var k = 0; k < al.length; k++  ) {
@@ -54,10 +54,10 @@ function anotherloop(number) {
     console.log(finalfinalNums);
 
     //sendSms("5104587177", "hello");
-    //for( var z = 0; z < finalNums.length; z++ ) {
-    //  console.log(z + " " + finalNums[z]);
-    //  sendSms(finalNums[z].toString(), "hello"+z);
-    //}
+    for( var z = 0; z < finalNums.length; z++ ) {
+      //console.log(z + " " + finalfinalNums[z]);
+      sendSms(finalfinalNums[z].toString(), "**PROTECT PURDUE NOTICE!** Someone in your close friends has tested positive for COVID. It is advised that you take a COVID test ASAP.");
+    }
   }  
 
   function sendSms(to, body) {
@@ -80,4 +80,3 @@ function anotherloop(number) {
 
   UrlFetchApp.fetch(messages_url, options);
 }
-
