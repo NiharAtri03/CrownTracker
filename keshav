@@ -37,8 +37,17 @@ function createObjectId() {
 idBox.setValue(objectStringId); 
  toWrite = "R" + lR;
  var idBox = SpreadsheetApp.getActiveSpreadsheet().getRange(toWrite);
-idBox.setValue(closePhoneList); 
-  //KV -1/22/21 @10:15
+idBox.setValue(closePhoneList);
+if(covid19Status=="Positive"){
+  //console.log("this is a positive test");
+  findNumbers(lR);
+
+
+
+
+}
+
+  //KV -1/23/21 @12:16
 
   
 
