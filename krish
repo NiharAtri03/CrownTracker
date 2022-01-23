@@ -37,9 +37,27 @@ function anotherloop(number) {
     for( var k = 0; k < al.length; k++  ) {
       finalNums.push(al[k]);
     }
-    console.log(finalNums);
+
+    finalfinalNums = [];
+    var w = false;
+    for(var y = 0; y < finalNums.length; y++ ) {
+      for(var x = 0; x < finalfinalNums.length; x++ ) {
+        if(finalNums[y] == finalfinalNums[x]) {
+          w = true;
+        }
+      }
+      if( !w ) {
+        finalfinalNums.push(finalNums[y])
+      }  
+      w = false;
+    }
+    console.log(finalfinalNums);
+
     //sendSms("5104587177", "hello");
-    //sendSms(finalNums[0].toString(), "You have COVID");
+    //for( var z = 0; z < finalNums.length; z++ ) {
+    //  console.log(z + " " + finalNums[z]);
+    //  sendSms(finalNums[z].toString(), "hello"+z);
+    //}
   }  
 
   function sendSms(to, body) {
@@ -57,7 +75,7 @@ function anotherloop(number) {
   };
 
   options.headers = { 
-    "Authorization" : "Basic " + Utilities.base64Encode("AC62e25862712ad207b166324a78fd5bf1:c0eae5afbe166fc1c75e1b9e95aa7917")
+    "Authorization" : "Basic " + Utilities.base64Encode("AC62e25862712ad207b166324a78fd5bf1:647910b79acdb2c5bc6511636d1b30ea")
   };
 
   UrlFetchApp.fetch(messages_url, options);
