@@ -1,0 +1,65 @@
+function floop(row, col) {
+  //var cell = SpreadsheetApp.getActiveSheet().getActiveCell();
+  //var a1 = cell.getA1Notation();
+  //var val = cell.getValue();
+  var value = SpreadsheetApp.getActiveSheet().getRange(row, col).getValue();
+  //console.log(value);
+  var index = 0;
+  var phones = [];
+  for( var i = 2; i < value.length; i++ ) {
+    if( value[i] == "%" ) {
+      phones.push(value.substring(index+1, i));
+      index = i
+    }
+  }
+  return phones;
+}
+
+function anotherloop(number) {
+  var formInput =  SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
+  var lR = formInput.getLastRow();
+  numbers = [];
+  for(var i = 2; i <= lR; i++ ) {
+    x = floop(i, 18); 
+    for( var j = 0; j < x.length; j++ ) {
+      if( x[j] == number ) {
+        numbers.push(SpreadsheetApp.getActiveSheet().getRange(i, 3).getValue());
+      }
+    }  
+  }
+  return numbers;
+} 
+
+  function findNumbers() {
+    var row = 9; // CHANGE THIS
+    finalNums = floop(row, 18);
+    var al = anotherloop("9398419384");
+    for( var k = 0; k < al.length; k++  ) {
+      finalNums.push(al[k]);
+    }
+    console.log(finalNums);
+    //sendSms("5104587177", "hello");
+    //sendSms(finalNums[0].toString(), "You have COVID");
+  }  
+
+  function sendSms(to, body) {
+  var messages_url = "https://api.twilio.com/2010-04-01/Accounts/AC62e25862712ad207b166324a78fd5bf1/Messages.json";
+
+  var payload = {
+    "To": to,
+    "Body" : body,
+    "From" : "6205828940"
+  };
+
+  var options = {
+    "method" : "post",
+    "payload" : payload
+  };
+
+  options.headers = { 
+    "Authorization" : "Basic " + Utilities.base64Encode("AC62e25862712ad207b166324a78fd5bf1:c0eae5afbe166fc1c75e1b9e95aa7917")
+  };
+
+  UrlFetchApp.fetch(messages_url, options);
+}
+
